@@ -1,0 +1,18 @@
+.colorpicker {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  &__block {
+    height: 400px;
+    transition: all 0.5s;
+    position: relative;
+  }
+  &__name {
+    font-size: 3rem;
+    font-weight: bold;
+    color: white;
+    font-family: Arial;
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+  }
+}
