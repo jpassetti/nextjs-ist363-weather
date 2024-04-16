@@ -1,0 +1,16 @@
+@use "../sass/abstracts/mixins";
+
+.container {
+  margin: 0 auto;
+  padding: 0 1rem;
+  background-color: pink;
+  @include mixins.breakpoint(sm) {
+    width: 700px;
+  }
+  @include mixins.breakpoint(md) {
+    width: 980px;
+  }
+  @include mixins.breakpoint(lg) {
+    width: 1140px;
+  }
+}
