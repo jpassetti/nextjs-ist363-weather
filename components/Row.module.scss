@@ -1,0 +1,20 @@
+.row {
+  display: flex;
+  background-color: limegreen;
+  height: 200px;
+  &.justify-content-space-between {
+    justify-content: space-between;
+  }
+  &.justify-content-center {
+    justify-content: center;
+  }
+  &.align-items-center {
+    align-items: center;
+  }
+  &.align-items-flex-start {
+    align-items: flex-start;
+  }
+  &.align-items-flex-end {
+    align-items: flex-end;
+  }
+}
