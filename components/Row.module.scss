@@ -1,20 +1,10 @@
+@use "../sass/abstracts/mixins";
+
 .row {
   display: flex;
-  background-color: limegreen;
-  height: 200px;
-  &.justify-content-space-between {
-    justify-content: space-between;
-  }
-  &.justify-content-center {
-    justify-content: center;
-  }
-  &.align-items-center {
-    align-items: center;
-  }
-  &.align-items-flex-start {
-    align-items: flex-start;
-  }
-  &.align-items-flex-end {
-    align-items: flex-end;
-  }
+  flex-wrap: wrap;
+  //background-color: limegreen;
+  //gap: 1rem;
+  @include mixins.generateJustifyContentClasses();
+  @include mixins.generateAlignItemsClasses();
 }

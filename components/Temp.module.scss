@@ -1,0 +1,9 @@
+@use "../sass/abstracts/mixins";
+
+.temp {
+  font-family: Arial;
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
+  @include mixins.generateFontSizeClasses();
+}

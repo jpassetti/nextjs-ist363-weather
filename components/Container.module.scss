@@ -3,7 +3,7 @@
 .container {
   margin: 0 auto;
   padding: 0 1rem;
-  background-color: pink;
+  //background-color: pink;
   @include mixins.breakpoint(sm) {
     width: 700px;
   }

@@ -41,3 +41,52 @@
 
   // error warn if string does not match or it is not a length
 }
+
+@mixin generateJustifyContentClasses() {
+  $values: flex-start, flex-end, center, space-between, space-around,
+    space-evenly, initial, inherit;
+  @each $value in $values {
+    &.justify-content-#{$value} {
+      justify-content: $value;
+    }
+  }
+}
+
+@mixin generateAlignItemsClasses() {
+  $values: stretch, flex-start, flex-end, center, baseline, initial, inherit;
+  @each $value in $values {
+    &.align-items-#{$value} {
+      align-items: $value;
+    }
+  }
+}
+
+@mixin generateColClasses() {
+  $sizes: xs, sm, md, lg, xl;
+
+  @each $size in $sizes {
+    @include breakpoint(#{$size}) {
+      @for $i from 1 through 12 {
+        &.col__#{$size}__#{$i} {
+          width: calc($i/12 * 100%);
+        }
+      }
+    }
+  }
+}
+
+@mixin generateFontSizeClasses() {
+  $sizes: (
+    xs: 0.75rem,
+    sm: 1rem,
+    md: 2rem,
+    lg: 3rem,
+    xl: 4rem,
+  );
+
+  @each $size, $value in $sizes {
+    &.font_size--#{$size} {
+      font-size: $value;
+    }
+  }
+}

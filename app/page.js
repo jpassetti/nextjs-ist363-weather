@@ -12,10 +12,12 @@ import Container from "../components/Container";
 import List from "../components/List";
 import Row from "../components/Row";
 import Tabs from "../components/Tabs";
+import Temp from "../components/Temp";
 
 import { getGeoLocation, getPeople, getWeatherDataByLatLon } from "../lib/api";
 
 const Homepage = () => {
+  const [loading, setLoading] = useState(true);
   const [weatherData, setWeatherData] = useState(null);
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
@@ -37,6 +39,7 @@ const Homepage = () => {
     const fetchData = async () => {
       const response = await getWeatherDataByLatLon(location);
       setWeatherData(response);
+      setLoading(false);
     };
     location ? fetchData() : null;
   }, [location]);
@@ -63,14 +66,17 @@ const Homepage = () => {
 
   return (
     <div>
-      <h1>Weather app</h1>
       {errorMsg && <div>{errorMsg}</div>}
-      {weatherData && (
+      {loading ? (
+        <Container>
+          <p>Loading...</p>
+        </Container>
+      ) : (
         <Container>
           <Row>
-            <Col>
+            <Col sm={3} md={4}>
               <h2>{weatherData.city.name}</h2>
-              <p>Current temp: {weatherData.list[0].main.temp}&deg; F</p>
+              <Temp size="xl" amount={weatherData.list[0].main.temp} />
               <p>{weatherData.list[0].weather[0].description}</p>
               <Image
                 src={`https://openweathermap.org/img/wn/${weatherData.list[0].weather[0].icon}@2x.png`}
@@ -79,24 +85,24 @@ const Homepage = () => {
                 height={100}
               />
             </Col>
-            <Col>Tabs and List goes here.</Col>
+            <Col sm={9} md={8}>
+              {weatherData && daysOfWeek && (
+                <section>
+                  <Tabs
+                    activeIndex={activeDayIndex}
+                    items={daysOfWeek}
+                    clickHandler={setActiveDayIndex}
+                  />
+                  <List
+                    activeIndex={activeDayIndex}
+                    items={weatherData.list}
+                    daysOfWeek={daysOfWeek}
+                  />
+                </section>
+              )}
+            </Col>
           </Row>
         </Container>
-      )}
-
-      {weatherData && daysOfWeek && (
-        <section>
-          <Tabs
-            activeIndex={activeDayIndex}
-            items={daysOfWeek}
-            clickHandler={setActiveDayIndex}
-          />
-          <List
-            activeIndex={activeDayIndex}
-            items={weatherData.list}
-            daysOfWeek={daysOfWeek}
-          />
-        </section>
       )}
     </div>
   );
