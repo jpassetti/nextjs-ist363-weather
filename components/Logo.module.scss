@@ -1,12 +1,15 @@
+@use "../sass/abstracts/vars";
+
 .branding {
   &__logo {
     width: 80px;
     height: auto;
   }
   &__wordmark {
-    font-family: Arial;
+    font-family: vars.$font__secondary;
     font-weight: bold;
     font-size: 1.25rem;
     text-transform: uppercase;
+    margin-left: 1rem;
   }
 }

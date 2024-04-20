@@ -1,3 +1,5 @@
+@use "../sass/abstracts/vars";
+
 .tabs {
   margin: 0;
   list-style: none;
@@ -5,13 +7,16 @@
   gap: 1rem;
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
-  padding: 0.5rem 0;
+  margin-bottom: 1rem;
   &__item {
-    font-family: Arial;
+    font-family: vars.$font__secondary;
     font-size: 1rem;
+    text-transform: uppercase;
+    font-weight: bold;
     cursor: pointer;
+    padding: 1rem;
     &.active {
-      border-bottom: 3px solid red;
+      border-bottom: 3px solid vars.$color__primary;
     }
   }
 }
